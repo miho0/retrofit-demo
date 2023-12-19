@@ -12,7 +12,7 @@ interface TaskApi {
     @GET("task")
     fun getTasks(): Call<MutableList<TaskDto>>
     @POST("task")
-    fun addTask(@Body task: TaskAddUpdateDto): Call<Unit>
+    fun addTask(@Body task: TaskAddUpdateDto): Call<TaskDto>
     @PUT("task/{id}")
     fun editTask(@Path("id") id:String, @Body task: TaskAddUpdateDto): Call<Unit>
     @DELETE("task/{id}")

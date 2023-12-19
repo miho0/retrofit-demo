@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">retrofit-demo</string>
+    <string name="emptyInput">Please input the data</string>
+    <string name="edit">Edit</string>
+    <string name="save">Save</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
 </resources>

@@ -72,6 +72,11 @@ class SetRecyclerViewAdapter (private val context: Context, private val taskServ
         notifyItemChanged(position)
     }
 
+    fun addTask(task: TaskDto) {
+        tasks.add(task)
+        notifyItemInserted(tasks.size - 1)
+    }
+
     fun updateTasks(newTasks: List<TaskDto>) {
         tasks.clear()
         tasks.addAll(newTasks)

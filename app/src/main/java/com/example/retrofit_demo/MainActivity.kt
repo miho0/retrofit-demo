@@ -2,6 +2,7 @@ package com.example.retrofit_demo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,13 +27,19 @@ class MainActivity : AppCompatActivity(), SetRecyclerViewAdapter.OnItemClickList
         val descriptionInput = binding.descriptionInput
         val submitButton = binding.submitButton
 
+        val emptyInputToast = Toast.makeText(this, R.string.emptyInput, Toast.LENGTH_SHORT)
+
         submitButton.setOnClickListener {
             if (!isEditing) {
                 if (nameInput.text.isBlank() || descriptionInput.text.isBlank()) {
-                    Toast.makeText(this, "Please input the data", Toast.LENGTH_SHORT).show()
+                    emptyInputToast.show()
                 } else {
                     val taskAddDto = TaskAddUpdateDto(nameInput.text.toString(), descriptionInput.text.toString())
-                    taskService.addTask(taskAddDto)
+                    taskService.addTask(taskAddDto) {task ->
+                        if (task != null) {
+                            adapter.addTask(task)
+                        }
+                    }
                     taskService.getTasks { tasks ->
                         tasks?.let {
                             adapter.updateTasks(tasks)
@@ -41,14 +48,14 @@ class MainActivity : AppCompatActivity(), SetRecyclerViewAdapter.OnItemClickList
                 }
             } else {
                 if (nameInput.text.isBlank() || descriptionInput.text.isBlank()) {
-                    Toast.makeText(this, "Please input the data", Toast.LENGTH_SHORT).show()
+                    emptyInputToast.show()
                 } else {
                     val task = TaskAddUpdateDto(nameInput.text.toString(), descriptionInput.text.toString())
                     taskService.updateTask(editingId, task)
                     adapter.updateTask(TaskDto(editingId, nameInput.text.toString(), descriptionInput.text.toString()), editingPosition)
-                    reset()
                 }
             }
+            reset()
 
         }
 
@@ -66,10 +73,14 @@ class MainActivity : AppCompatActivity(), SetRecyclerViewAdapter.OnItemClickList
     }
 
     override fun onItemClick(task: TaskDto, position: Int) {
+        Log.i("aa", position.toString())
+        Log.i("aa", editingPosition.toString())
+        if (isEditing && position == editingPosition) reset()
+
         isEditing = true
         editingId = task.id
         editingPosition = position
-        binding.submitButton.text = "Edit"
+        binding.submitButton.text = getString(R.string.edit)
         binding.nameInput.setText(task.name)
         binding.descriptionInput.setText(task.description)
     }
@@ -78,7 +89,7 @@ class MainActivity : AppCompatActivity(), SetRecyclerViewAdapter.OnItemClickList
         isEditing = false
         editingId = ""
         editingPosition = -1
-        binding.submitButton.text = "Save"
+        binding.submitButton.text = getString(R.string.save)
         binding.nameInput.setText("")
         binding.descriptionInput.setText("")
     }

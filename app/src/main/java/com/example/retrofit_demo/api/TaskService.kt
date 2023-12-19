@@ -32,23 +32,26 @@ class TaskService {
             }
 
             override fun onFailure(call: Call<MutableList<TaskDto>>, t: Throwable) {
-                Log.e("API_CALL_ERROR", "Failed API call", t)
+                Log.e("GET_API_CALL_ERROR", "Failed API call", t)
                 callback(null)
             }
         })
     }
 
-    fun addTask(task: TaskAddUpdateDto) {
-        taskApi.addTask(task).enqueue(object : Callback<Unit> {
-            override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                if (!response.isSuccessful) {
-                    val errorBody = response.errorBody()?.string()
-                    Log.e("ERROR", errorBody.toString())
+    fun addTask(task: TaskAddUpdateDto, callback: (TaskDto?) -> Unit) {
+        taskApi.addTask(task).enqueue(object : Callback<TaskDto> {
+            override fun onResponse(call: Call<TaskDto>, response: Response<TaskDto>) {
+                if (response.isSuccessful) {
+                    val task: TaskDto? = response.body()
+                    callback(task)
+                } else {
+                    callback(null)
                 }
             }
 
-            override fun onFailure(call: Call<Unit>, t: Throwable) {
-                Log.e("API_CALL_ERROR", "Failed API call", t)
+            override fun onFailure(call: Call<TaskDto>, t: Throwable) {
+                Log.e("GET_API_CALL_ERROR", "Failed API call", t)
+                callback(null)
             }
         })
     }
@@ -58,12 +61,12 @@ class TaskService {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                 if (!response.isSuccessful) {
                     val errorBody = response.errorBody()?.string()
-                    Log.e("ERROR", errorBody.toString())
+                    Log.e("UPDATE_API_CALL_ERROR", errorBody.toString())
                 }
             }
 
             override fun onFailure(call: Call<Unit>, t: Throwable) {
-                Log.e("API_CALL_ERROR", "Failed API call", t)
+                Log.e("UPDATE_API_CALL_ERROR", "Failed API call", t)
             }
         })
     }
