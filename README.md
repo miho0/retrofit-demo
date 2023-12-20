@@ -9,7 +9,7 @@ Ko pišemo uporabniški vmesnik, se nam pogosto zgodi, da zraven njega potrebuje
 - enostavnost uporabe; če poznamo REST arhitekturo, je uporaba knjižnice zelo enostavna.
 - berljivost in preglednsot kode; pri večjih projektih se nam večkrat zgodi, da se zgubimo in ne vemo več, kje se kliče kaj. Pri retrofit-u pa imamo zelo pregledno definirano, kaj se kliče pri posamezni funkciji in kateri parametri sodijo kam.
 - možnost dobre modularnosti; sistem lahko razdelimo na manjše dele, ki med seboj niso odvisni, kar omogoča ločevanje odgovornosti (vsak modul je npr. odgovoren zgolj za eno skupino endpointov), in ponovno uporabo kode.
-- obdelovanje napak; retrofit bo v različnih primerih vrgel različne napake (npr. napaka avtentikacije (401), not found (404)). Na različne tipe napak se lahko nato ustrezno odzovemo.
+- asinhrono izvajanje zahtevkov
 - varnost tipov; definiramo, v kateri tip se nam podatki pretvorijo. Tako lahko napake, ki bi jih sicer ugotovili v času zagona, ugotovimo že v času prevajanja.
 
 ## Slabosti
