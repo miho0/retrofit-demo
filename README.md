@@ -1,12 +1,15 @@
+# Retrofit
+Retrofit je visoko nivojska knjižnica, ki jo je razvil Square. Uporablja se za poenostavljeno pisanje API klicev za REST API-je.
+
 ## Zakaj?
-Retrofit je visoko nivojska knjižnica, ki je zgrajena na podlagi OkHttp. Je pa precej bolj specializirana. Za razliko od OkHttp, kjer lahko skonfiguriramo marsikatere klice,
-je Retrofit namenjen zgolj RESTful API klicem. Je torej odlična izbira, če želimo v našo aplikacijo integrirati RESTful API.
+Ko pišemo uporabniški vmesnik, se nam pogosto zgodi, da zraven njega potrebujemo še strežnik. Razlogov za to je lahko več, npr. kompleksnejši izračuni, ki jih želimo izvesti na strežniku, uporaba podatkovne baze itd.
+Če smo se odločili strežnik narediti po REST arhiterkturi, potem nam Retrofit ponuja enostaven, berljiv način za integracijo našega API-ja.
 
 ## Prednosti
 - enostavnost uporabe; če poznamo REST arhitekturo, je uporaba knjižnice zelo enostavna.
 - berljivost in preglednsot kode; pri večjih projektih se nam večkrat zgodi, da se zgubimo in ne vemo več, kje se kliče kaj. Pri retrofit-u pa imamo zelo pregledno definirano, kaj se kliče pri posamezni funkciji in kateri parametri sodijo kam.
 - možnost dobre modularnosti; sistem lahko razdelimo na manjše dele, ki med seboj niso odvisni, kar omogoča ločevanje odgovornosti (vsak modul je npr. odgovoren zgolj za eno skupino endpointov), in ponovno uporabo kode.
-- obdelovanje napak; retrofit bo v različnih primerih vrgel različne napake (npr. napaka avtentikacije (401), not found (404). Na različne tipe napak se lahko nato ustrezno odzovemo.
+- obdelovanje napak; retrofit bo v različnih primerih vrgel različne napake (npr. napaka avtentikacije (401), not found (404)). Na različne tipe napak se lahko nato ustrezno odzovemo.
 - varnost tipov; definiramo, v kateri tip se nam podatki pretvorijo. Tako lahko napake, ki bi jih sicer ugotovili v času zagona, ugotovimo že v času prevajanja.
 
 ## Slabosti
@@ -20,4 +23,4 @@ Retrofit uporablja licenco Apache 2.0. To pomeni, da je odprtokoden projekt, kat
 Na githubu ima projekt več kot 42 tisoč zvezdic in 12 tisoč repozitorijev, ki so odvisni od njega.
 
 ## Vzdrževanje projekta
-Retrofit je razvilo podjetje square. Projekt ima na githubu 172 razvijalcev in več kot 7000 forkov. Projekt je aktiven, zadnji commiti so bili narejeni včeraj (18.12.2023).
+Projekt ima na githubu 172 razvijalcev in več kot 7000 forkov. Projekt je aktiven, zadnji commiti so bili narejeni včeraj (18.12.2023).
