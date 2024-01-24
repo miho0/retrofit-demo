@@ -24,3 +24,12 @@ Na githubu ima projekt več kot 42 tisoč zvezdic in 12 tisoč repozitorijev, ki
 
 ## Vzdrževanje projekta
 Projekt ima na githubu 172 razvijalcev in več kot 7000 forkov. Projekt je aktiven, zadnji commiti so bili narejeni včeraj (18.12.2023).
+
+## Demo
+Demo aplikacija je enostaven CRUD, ki nam omogoča dodajanje, brisanje, spreminjanje in ogled taskov. Za API uporabljamo [CRUDCRUD](https://crudcrud.com/).
+![415488329_1160390114942942_7312022542125275092_n](https://github.com/miho0/retrofit-demo/assets/112256554/ae3ea947-02e7-43dc-8148-64648558a6d5)
+![421180220_331392366541152_766154733723959864_n](https://github.com/miho0/retrofit-demo/assets/112256554/210665c7-09de-4905-9c73-09e82c494061)
+![419723515_6971948759568581_7528531983328931705_n](https://github.com/miho0/retrofit-demo/assets/112256554/a866649b-2403-48be-b914-a7268a2065f6)
+
+
+[Vključitev v 2. nalogo pri predmetu PORA](https://github.com/3-letnik-UN-2023-2024/my-second-app-miho0)
